@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registration Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            function validate()
+            {
+                var uname = document.regForm.username.value;
+                if (uname == null || uname ==0)
+                {
+                    document.getElementById("erruser").innerHTML="Username neither can't be blank or '0' ";
+                    return false;
+                }
+                
+                var fname = document.regForm.firstname.value;
+                if (fname == null || fname ==0)
+                {
+                    document.getElementById("errfname").innerHTML="First name neither can't be blank or '0' ";
+                    return false;
+                }
+                
+                var lname = document.regForm.lastname.value;
+                if (lname == null || lname ==0)
+                {
+                    document.getElementById("errlname").innerHTML="Last name neither can't be blank or '0' ";
+                    return false;
+                }
+                
+                var mail = document.regForm.email.value;
+                var atpos = mail.indexOf("@");
+                var dotpos = mail.lastIndexOf(".");
+                if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length)
+                {
+                    document.getElementById("erremail").innerHTML="this is invalid mail-ID.";
+                    return false;
+                }
+                
+                var phone = document.regForm.number.value;
+                if (phone.length !== 10)
+                {
+                   
+                    document.getElementById("errnum").innerHTML="this is invalid number.Please enter 10";
+                    return false;   
+                }
+    
+                var pinc = document.regForm.pincode.value;
+                if (pinc == 0 || phone.length < 8)
+                {
+                    document.getElementById("errpin").innerHTML="Pincode can't be blank or '0' ";
+                    return false;
+                }
+                
+                if (true )
+                {
+                    alert("Do you really want to submit");  
+                }
+               return true;
+            }
+        </script>
+    </head> 
+    <body>
+        <center><h1>Registration Form</h1></center><hr>
+        <form name="regForm" method="get">
+            <table>
+                <tr>
+                    <td>User Name :</td>
+                    <td><input type="text" name="username" id="username"/><span id="erruser" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td>First Name :</td>
+                    <td><input type="text" name="firstname" id="firstname"/><span id="errfname" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td>Last Name :</td>
+                    <td><input type="text" name="lastname" id="lastname"/><span id="errlname" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td>Email-Id :</td>
+                    <td><input type="email" name="email" id="email"/><span id="erremail" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td>Mobile Number :</td>
+                    <td><input type="text" name="number" id="number"/><span id="errnum" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td>Country :</td>
+                    <td>
+                        <select id="select" class="required">
+                            <option value="Aus">Australia</option>
+                            <option value="chn">China</option>
+                            <option value="den">Denmark</option>
+                            <option value="hol">Holland</option>
+                            <option value="eng">England</option>
+                            <option value="ind">India</option>
+                            <option value="ame">US</option>
+                        </select>
+                        <span id="errcont" style="color:red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City :</td>
+                    <td>
+                        <select multiple>
+                            <option value="hyd">Hyderabad</option>
+                            <option value="chn">Chennai</option>
+                            <option value="ban">Bangalore</option>
+                            <option value="pun">Pune</option>
+                            <option value="mum">Mumbai</option>
+                            <option value="kol">Kolkata</option>
+                            <option value="del">Delhi</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pincode</td>
+                    <td><input type="text" name="pincode" id="pincode" /><span id="errpin" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="save" onclick="return validate()"/></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
